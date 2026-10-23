@@ -17,20 +17,22 @@ import java.time.ZonedDateTime;
 )
 
 
-public class Loan {
+public class Loan extends BaseEntity<Integer>  {
 
     public static final String TABLE_NAME = "loans";
 
 
-    @Id
-    @GeneratedValue
-    private Integer id;
 
-    @Column(name = "user_id")
-    private Integer userId;
 
-    @Column(name = "book_id")
-    private Integer bookId;
+    @JoinColumn(name = "book_id")
+    @ManyToOne
+    private Book book;
+
+    @JoinColumn(name = "user_id")
+    @ManyToOne
+    private Member member;
+
+
 
     @Column(name = "due_date")
     private ZonedDateTime dueDate;

@@ -7,6 +7,7 @@ import lombok.Setter;
 
 import java.time.LocalDate;
 import java.time.ZonedDateTime;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -15,12 +16,10 @@ import java.time.ZonedDateTime;
 @Table(
         name = Book.TABLE_NAME
 )
-public class Book {
+public class Book extends BaseEntity<Integer> {
     public static final String TABLE_NAME = "books";
 
-    @Id
-    @GeneratedValue
-    private Integer id;
+
 
     @Column(nullable = false, length = 100)
     private String name;
@@ -30,5 +29,8 @@ public class Book {
 
     @Column(nullable = false)
     private ZonedDateTime publishDate;
+
+    @OneToMany(mappedBy = "loan")
+    private Set<Loan> loans;
 
 }

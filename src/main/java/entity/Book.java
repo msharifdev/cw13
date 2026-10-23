@@ -21,6 +21,8 @@ public class Book extends BaseEntity<Integer> {
 
 
 
+
+
     @Column(nullable = false, length = 100)
     private String name;
 

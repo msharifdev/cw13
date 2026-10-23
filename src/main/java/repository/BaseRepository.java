@@ -2,7 +2,7 @@ package repository;
 
 import entity.BaseEntity;
 
-import javax.swing.text.html.parser.Entity;
+import java.util.List;
 
 public interface BaseRepository<E extends BaseEntity<ID>, ID extends Number> {
 
@@ -10,4 +10,9 @@ public interface BaseRepository<E extends BaseEntity<ID>, ID extends Number> {
 
     void update(E entity);
 
+    E findById(ID id);
+
+    List<E> findAll();
+
+    void deleteById(ID id);
 }

@@ -17,16 +17,33 @@ public abstract class BaseRepositoryImpl<E extends BaseEntity<ID>, ID extends Nu
 
         EntityTransaction transaction = entityManager.getTransaction();
 
-        try{
+        try {
 
-        transaction.begin();
-        entityManager.persist(entity);
-        transaction.commit();
+            transaction.begin();
+            entityManager.persist(entity);
+            transaction.commit();
 
-    } catch (Exception e) {
+        } catch (Exception e) {
 
             transaction.rollback();
-            throw new RuntimeException("error in save",e);
+            throw new RuntimeException("error in save", e);
+        }
+    }
+
+    public void update(E entity) {
+
+        EntityTransaction transaction = entityManager.getTransaction();
+
+        try {
+
+            transaction.begin();
+            entityManager.merge(entity);
+            transaction.commit();
+
+        } catch (Exception e) {
+
+            transaction.rollback();
+            throw new RuntimeException("error in update", e);
         }
     }
 }

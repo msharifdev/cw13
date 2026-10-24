@@ -20,10 +20,10 @@ public class MemberRepositoryImpl extends BaseRepositoryImpl<Member, Integer> im
     @Override
     public Member findByEmail(String givenEmail) {
 
-        Query query = entityManager.createQuery("SELECT m FROM Member m WHERE m.email = ? ");
-        query.setParameter(0, givenEmail);
+        return entityManager.createQuery("SELECT m FROM Member m WHERE m.email = :email ", getEntityClass())
+                .setParameter("email", givenEmail)
+                .getSingleResult();
 
-        List<Member> resultList = query.getResultList();
-        return resultList.getFirst();
+
     }
 }

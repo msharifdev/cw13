@@ -57,7 +57,10 @@ public abstract class BaseRepositoryImpl<E extends BaseEntity<ID>, ID extends Nu
 
     @Override
     public List<E> findAll() {
-        return List.of();
+         return entityManager.createQuery("SELECT e FROM  " + getEntityClass() + " e ",getEntityClass())
+                .getResultList();
+
+
     }
 
     @Override

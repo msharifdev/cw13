@@ -35,4 +35,7 @@ public class Book extends BaseEntity<Integer> {
     @OneToMany(mappedBy = "loan")
     private Set<Loan> loans;
 
+    @Column(nullable = false,length = 20)
+    private String isbn;
+
 }

@@ -32,8 +32,7 @@ public class Member extends BaseEntity<Integer>  {
     private String phoneNumber;
 
 
-
-    @OneToMany(mappedBy = "loan")
+    @OneToMany(mappedBy = "member")
     private Set<Loan> loans;
 
 }

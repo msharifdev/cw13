@@ -32,7 +32,7 @@ public class Book extends BaseEntity<Integer> {
     @Column(nullable = false)
     private ZonedDateTime publishDate;
 
-    @OneToMany(mappedBy = "loan")
+    @OneToMany(mappedBy = "book")
     private Set<Loan> loans;
 
     @Column(nullable = false,length = 20)

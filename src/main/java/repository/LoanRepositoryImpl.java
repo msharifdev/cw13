@@ -61,7 +61,7 @@ public class LoanRepositoryImpl extends BaseRepositoryImpl<Loan, Integer> implem
 
     @Override
     public long countActiveLoansByMemberId(Long memberId) {
-        return entityManager.createQuery("SELECT COUNT(l) FROM  Loan l WHERE member.id= :memberId And l.status= :status", Long.class)
+        return entityManager.createQuery("SELECT COUNT(l) FROM  Loan l WHERE l.member.id= :memberId And l.status= :status", Long.class)
                 .setParameter("memberId", memberId)
                 .setParameter("status", LoanStatus.ACTIVE)
                 .getSingleResult();

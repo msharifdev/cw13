@@ -22,7 +22,7 @@ public class MemberRepositoryImpl extends BaseRepositoryImpl<Member, Integer> im
 
         return entityManager.createQuery("SELECT m FROM Member m WHERE m.email = :email ", getEntityClass())
                 .setParameter("email", givenEmail)
-                .getSingleResult();
+                .getResultStream().findFirst().orElse(null);
 
 
 

@@ -24,8 +24,8 @@ public class BookRepositoryImpl extends BaseRepositoryImpl<Book,Integer> impleme
 
     @Override
     public List<Book> getMostBorrowedBooks() {
-        return entityManager.createQuery("",Book.class).getResultList();
-
+        return entityManager.createQuery(" SELECT l.book FROM Loan l GROUP BY l.book ORDER BY COUNT(l) DESC",Book.class)
+                .getResultList();
 
 
     }

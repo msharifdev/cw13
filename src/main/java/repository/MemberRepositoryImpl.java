@@ -25,5 +25,6 @@ public class MemberRepositoryImpl extends BaseRepositoryImpl<Member, Integer> im
                 .getSingleResult();
 
 
+
     }
 }

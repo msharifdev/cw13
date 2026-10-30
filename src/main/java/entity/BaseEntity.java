@@ -9,7 +9,6 @@ import lombok.Setter;
 @Getter
 @NoArgsConstructor
 @MappedSuperclass
-
 public abstract class BaseEntity<ID extends Number> {
 
 

@@ -13,11 +13,12 @@ public class MemberService {
     private final TransactionManager transactionManager;
 
 
-    public MemberService(MemberRepository memberRepository, LoanRepository loanRepository, EntityManager entityManager) {
+    public MemberService(MemberRepository memberRepository, LoanRepository loanRepository,
+                         EntityManager entityManager,TransactionManager transactionManager) {
         this.memberRepository = memberRepository;
         this.loanRepository = loanRepository;
         this.entityManager = entityManager;
-        this.transactionManager = new TransactionManager(entityManager);
+        this.transactionManager = transactionManager;
     }
 
     public void register(Member member) {

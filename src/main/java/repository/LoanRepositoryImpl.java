@@ -38,7 +38,7 @@ public class LoanRepositoryImpl extends BaseRepositoryImpl<Loan, Integer> implem
                         "AND l.status= :status", Loan.class)
                 .setParameter("bookId", bookId)
                 .setParameter("status", LoanStatus.ACTIVE)
-                .getSingleResult();
+                .getResultStream().findFirst().orElse(null);
     }
 
     @Override

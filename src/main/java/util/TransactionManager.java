@@ -14,6 +14,7 @@ public class TransactionManager {
     public <T> T execute(Supplier<T> logic) {
         EntityTransaction transaction = entityManager.getTransaction();
         if (transaction.isActive()) {
+            System.out.println("**************************");
             return logic.get();
         }
         T t;
